@@ -167,6 +167,9 @@ local function AddItem(source, item, amount, slot, info, created)
 		info.quality = info.quality or 100
 	end
 	if (totalWeight + (itemInfo['weight'] * amount)) <= Config.MaxInventoryWeight then
+		if item == "phone" then
+			TriggerClientEvent('lb-phone:itemAdded', source)
+		end
 		if (slot and Player.PlayerData.items[slot]) and (Player.PlayerData.items[slot].name:lower() == item:lower()) and (itemInfo['type'] == 'item' and not itemInfo['unique']) then
 			if Player.PlayerData.items[slot].info.quality == info.quality then
 			Player.PlayerData.items[slot].amount = Player.PlayerData.items[slot].amount + amount
@@ -225,6 +228,9 @@ local function RemoveItem(source, item, amount, slot)
 
 	amount = tonumber(amount) or 1
 	slot = tonumber(slot)
+	if item == "phone" then
+		TriggerClientEvent('lb-phone:itemRemoved', source)
+	end
 
 	if slot then
 		if Player.PlayerData.items[slot].amount > amount then
