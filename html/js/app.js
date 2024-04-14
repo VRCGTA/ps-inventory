@@ -584,7 +584,7 @@ function handleDragDrop() {
                     $(this).find(".item-slot-amount p").html("0");
                     $(".ui-draggable-dragging")
                         .find(".item-slot-amount p")
-                        .html(" " + itemData.amount + " $" + itemData.price);
+                        .html(" " + itemData.amount + " 𝕍" + itemData.price);
                     $(".ui-draggable-dragging").find(".item-slot-key").remove();
                     if ($(this).parent().attr("data-inventory") == "hotbar") {
                         // $(".ui-draggable-dragging").find(".item-slot-key").remove();
@@ -608,7 +608,7 @@ function handleDragDrop() {
                 if (itemData.price != null) {
                     $(this)
                         .find(".item-slot-amount p")
-                        .html(" " + itemData.amount + " $" + itemData.price);
+                        .html(" " + itemData.amount + " 𝕍" + itemData.price);
                     if ($(this).parent().attr("data-inventory") == "hotbar") {
                         // $(".ui-draggable-dragging").find(".item-slot-key").remove();
                     }
@@ -630,10 +630,10 @@ function handleDragDrop() {
                 if (itemData.price != null) {
                     $(this)
                         .find(".item-slot-amount p")
-                        .html(" " + itemData.amount + " $" + itemData.price);
+                        .html(" " + itemData.amount + " 𝕍" + itemData.price);
                     $(".ui-draggable-dragging")
                         .find(".item-slot-amount p")
-                        .html(" " + itemData.amount + " $" + itemData.price);
+                        .html(" " + itemData.amount + " 𝕍" + itemData.price);
                     $(".ui-draggable-dragging").find(".item-slot-key").remove();
                     if ($(this).parent().attr("data-inventory") == "hotbar") {
                         // $(".ui-draggable-dragging").find(".item-slot-key").remove();
@@ -827,7 +827,7 @@ function updateweights($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                     '" /></div><div class="item-slot-amount"><p>' +
                     itemData.amount +
                     '</div><div class="item-slot-name"><p>' +
-                    " $" +
+                    " 𝕍" +
                     itemData.price +
                     '</p></div><div class="item-slot-label"><p>' +
                     itemData.label +
@@ -873,7 +873,7 @@ function updateweights($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                     '" /></div><div class="item-slot-amount"><p>' +
                     itemData.amount +
                     '</div><div class="item-slot-name"><p>' +
-                    " $" +
+                    " 𝕍" +
                     itemData.price +
                     '</p></div><div class="item-slot-label"><p>' +
                     itemData.label +
@@ -918,7 +918,7 @@ function updateweights($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                     '" /></div><div class="item-slot-amount"><p>' +
                     itemData.amount +
                     '</div><div class="item-slot-name"><p>' +
-                    " $" +
+                    " 𝕍" +
                     itemData.price +
                     '</p></div><div class="item-slot-label"><p>' +
                     itemData.label +
@@ -1494,7 +1494,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                             '" /></div><div class="item-slot-amount"><p>' +
                             newDataFrom.amount +
                             '</div><div class="item-slot-name"><p>' +
-                            " $" +
+                            " 𝕍" +
                             newDataFrom.price +
                             '</p></div><div class="item-slot-label"><p>' +
                             newDataFrom.label +
@@ -2085,7 +2085,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                             '" /></div><div class="item-slot-amount"><p>' +
                             newDataFrom.amount +
                             '</div><div class="item-slot-name"><p>' +
-                            " $" +
+                            " 𝕍" +
                             newDataFrom.price +
                             '</p></div><div class="item-slot-label"><p>' +
                             newDataFrom.label +
@@ -2561,7 +2561,7 @@ var requiredItemOpen = false;
                                 '" /></div><div class="item-slot-amount"><p>' +
                                 item.amount +
                                 '</div><div class="item-slot-name"><p>' +
-                                " $" +
+                                " 𝕍" +
                                 item.price +
                                 "</p></div>" +
                                 ItemLabel
