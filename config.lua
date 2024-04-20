@@ -17,13 +17,13 @@ Config.Progressbar = {
 }
 
 Config.VendingObjects = {
-    "prop_vend_soda_01",
-    "prop_vend_soda_02",
-    "prop_vend_water_01"
+    -- "prop_vend_soda_01",
+    -- "prop_vend_soda_02",
+    -- "prop_vend_water_01"
 }
 
 Config.BinObjects = {
-    "prop_bin_05a",
+    -- "prop_bin_05a",
 }
 
 Config.CraftingObject = `prop_toolchest_05` -- Only needed if not using target | Line 928 to change Target Models
