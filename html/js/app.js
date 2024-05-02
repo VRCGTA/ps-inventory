@@ -525,6 +525,8 @@ function generateDescription(itemData) {
             return `<p>Lab: ${itemData.info.lab}</p>`;
         case "book":
             return "<p>Name: " + itemData.info.name + "</p>" + "<p>Author: " + itemData.info.author + "</p>"
+        case "menu":
+            return "<p>Business: " + itemData.info.business + "</p>" + "<p>Author: " + itemData.info.author + "</p>"
         case "coupon":
             return "<p>Business: " + itemData.info.business + "</p>" + "<p>Author: " + itemData.info.author + "</p>"
         case "business_card":
