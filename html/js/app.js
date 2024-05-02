@@ -523,12 +523,14 @@ function generateDescription(itemData) {
             return `<p><strong>Card Holder: </strong><span>${itemData.info.name}</span></p>`;
         case "labkey":
             return `<p>Lab: ${itemData.info.lab}</p>`;
+        case "book":
+            return "<p>Name: " + itemData.info.name + "</p>" + "<p>Author: " + itemData.info.author + "</p>"
         case "coupon":
-            return "<p>Business: " + itemData.info.business + "</p>"
+            return "<p>Business: " + itemData.info.business + "</p>" + "<p>Author: " + itemData.info.author + "</p>"
         case "business_card":
-            return "<p>Business: " + itemData.info.business + "</p>"
+            return "<p>Business: " + itemData.info.business + "</p>" + "<p>Author: " + itemData.info.author + "</p>"
         case "flyer":
-            return "<p>Business: " + itemData.info.business + "</p>"
+            return "<p>Business: " + itemData.info.business + "</p>" + "<p>Author: " + itemData.info.author + "</p>"
         case "phone":
             return "<p><strong>Phone Number: </strong><span>" + (itemData.info.lbFormattedNumber ?? itemData.info.lbPhoneNumber) + "</span></p>"
     
