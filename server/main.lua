@@ -8,6 +8,85 @@ local Stashes = {}
 local ShopItems = {}
 
 -- Functions
+local function CreateDropId()
+	if Drops then
+		local id = math.random(10000, 99999)
+		local dropid = id
+		while Drops[dropid] do
+			id = math.random(10000, 99999)
+			dropid = id
+		end
+		return dropid
+	else
+		local id = math.random(10000, 99999)
+		local dropid = id
+		return dropid
+	end
+end
+
+local function CreateDropAndDropItem(source, item, amount, created)
+	local itemInfo = QBCore.Shared.Items[item:lower()]
+	local time = os.time()
+	if not created then
+		itemInfo['created'] = time
+	else
+		itemInfo['created'] = created
+	end
+	if not itemInfo and not Player.Offline then
+		QBCore.Functions.Notify(source, "Item does not exist", 'error')
+		return false
+	end
+	
+	local coords = GetEntityCoords(GetPlayerPed(source))
+	itemAmount = tonumber(amount) or 1
+	info = info or {}
+
+	info.quality = info.quality or 100
+	if itemInfo['type'] == 'weapon' then
+		info.serie = info.serie or tostring(QBCore.Shared.RandomInt(2) .. QBCore.Shared.RandomStr(3) .. QBCore.Shared.RandomInt(1) .. QBCore.Shared.RandomStr(2) .. QBCore.Shared.RandomInt(3) .. QBCore.Shared.RandomStr(4))
+		info.quality = info.quality or 100
+	end
+	
+	local dropId = -1
+	
+	for k, v in pairs(Drops) do
+		if #(coords - v.coords) < 2 then
+			dropId = k
+		end
+	end
+	if dropId == -1 then
+		dropId = CreateDropId()
+		Drops[dropId] = {}
+		Drops[dropId].coords = coords
+		Drops[dropId].createdTime = os.time()
+		Drops[dropId].items = {}
+	end
+	toSlot = #Drops[dropId].items + 1
+	
+	if toSlot > 29 then
+		QBCore.Functions.Notify(source, "Drop is full", 'error')
+		return
+	end
+
+	Drops[dropId].items[toSlot] = {
+		name = itemInfo["name"],
+		amount = itemAmount,
+		info = info,
+		label = itemInfo["label"],
+		description = itemInfo["description"] or "",
+		weight = itemInfo["weight"],
+		type = itemInfo["type"],
+		unique = itemInfo["unique"],
+		useable = itemInfo["useable"],
+		image = itemInfo["image"],
+		created = itemInfo['created'],
+		slot = toSlot,
+		id = dropId,
+	}
+
+	TriggerClientEvent("inventory:client:DropItemAnim", source)
+	TriggerClientEvent("inventory:client:AddDropItem", -1, dropId, source, coords)
+end
 
 ---Loads the inventory for the player with the citizenid that is provided
 
@@ -166,17 +245,19 @@ local function AddItem(source, item, amount, slot, info, created)
 		info.serie = info.serie or tostring(QBCore.Shared.RandomInt(2) .. QBCore.Shared.RandomStr(3) .. QBCore.Shared.RandomInt(1) .. QBCore.Shared.RandomStr(2) .. QBCore.Shared.RandomInt(3) .. QBCore.Shared.RandomStr(4))
 		info.quality = info.quality or 100
 	end
+
+	print(#Player.PlayerData.items)
 	if (totalWeight + (itemInfo['weight'] * amount)) <= Config.MaxInventoryWeight then
 		if item == "phone" then
 			TriggerClientEvent('lb-phone:itemAdded', source)
 		end
 		if (slot and Player.PlayerData.items[slot]) and (Player.PlayerData.items[slot].name:lower() == item:lower()) and (itemInfo['type'] == 'item' and not itemInfo['unique']) then
 			if Player.PlayerData.items[slot].info.quality == info.quality then
-			Player.PlayerData.items[slot].amount = Player.PlayerData.items[slot].amount + amount
-			Player.Functions.SetPlayerData("items", Player.PlayerData.items)
-			if Player.Offline then return true end
-			TriggerEvent('qb-log:server:CreateLog', 'playerinventory', 'AddItem', 'green', '**' .. GetPlayerName(source) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. source .. ')** got item: [slot:' .. slot .. '], itemname: ' .. Player.PlayerData.items[slot].name .. ', added amount: ' .. amount .. ', new total amount: ' .. Player.PlayerData.items[slot].amount)
-			return true
+				Player.PlayerData.items[slot].amount = Player.PlayerData.items[slot].amount + amount
+				Player.Functions.SetPlayerData("items", Player.PlayerData.items)
+				if Player.Offline then return true end
+				TriggerEvent('qb-log:server:CreateLog', 'playerinventory', 'AddItem', 'green', '**' .. GetPlayerName(source) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. source .. ')** got item: [slot:' .. slot .. '], itemname: ' .. Player.PlayerData.items[slot].name .. ', added amount: ' .. amount .. ', new total amount: ' .. Player.PlayerData.items[slot].amount)
+				return true
 			else
 				for i = 1, Config.MaxInventorySlots, 1 do
 					if Player.PlayerData.items[i] == nil then
@@ -187,6 +268,10 @@ local function AddItem(source, item, amount, slot, info, created)
 						return true
 					end
 				end
+				-- inventory slot max
+				QBCore.Functions.Notify(source, "Inventory too full, Item Dropped", 'error')
+				CreateDropAndDropItem(source, item, amount, created)
+				return true
 			end
 		elseif not itemInfo['unique'] and slot or slot and Player.PlayerData.items[slot] == nil then
 			Player.PlayerData.items[slot] = { name = itemInfo['name'], amount = amount, info = info or '', label = itemInfo['label'], description = itemInfo['description'] or '', weight = itemInfo['weight'], type = itemInfo['type'], unique = itemInfo['unique'], useable = itemInfo['useable'], image = itemInfo['image'], shouldClose = itemInfo['shouldClose'], slot = slot, combinable = itemInfo['combinable'], created = itemInfo['created'] }
@@ -210,9 +295,14 @@ local function AddItem(source, item, amount, slot, info, created)
 					return true
 				end
 			end
+			QBCore.Functions.Notify(source, "Inventory too full, Item Dropped", 'error')
+			CreateDropAndDropItem(source, item, amount, created)
+			return true
 		end
 	elseif not Player.Offline then
-		QBCore.Functions.Notify(source, "Inventory too full", 'error')
+		QBCore.Functions.Notify(source, "Inventory too full, Item Dropped", 'error')
+		CreateDropAndDropItem(source, item, amount, created)
+		return true
 	end
 	return false
 end
@@ -929,21 +1019,7 @@ local function RemoveFromDrop(dropId, slot, itemName, amount)
 	end
 end
 
-local function CreateDropId()
-	if Drops then
-		local id = math.random(10000, 99999)
-		local dropid = id
-		while Drops[dropid] do
-			id = math.random(10000, 99999)
-			dropid = id
-		end
-		return dropid
-	else
-		local id = math.random(10000, 99999)
-		local dropid = id
-		return dropid
-	end
-end
+
 
 local function CreateNewDrop(source, fromSlot, toSlot, itemAmount, created)
 	itemAmount = tonumber(itemAmount) or 1
@@ -989,6 +1065,8 @@ local function CreateNewDrop(source, fromSlot, toSlot, itemAmount, created)
 		return
 	end
 end
+
+
 
 local function OpenInventory(name, id, other, origin)
 	local src = origin
@@ -1650,7 +1728,7 @@ RegisterNetEvent('inventory:server:UseItem', function(inventory, item)
 							TriggerClientEvent("QBCore:Notify", src, "You can't use this item", "error")
 							TriggerClientEvent('inventory:client:ItemBox',src, itemInfo, "remove")
 							return
-	else
+						else
 							TriggerClientEvent("QBCore:Notify", src, "You can't use this item", "error")
 							return
 						end
