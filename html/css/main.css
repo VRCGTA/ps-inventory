@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto Sans JP:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
 
 .bg-button { background: var(--color-primary)!important; box-shadow: none!important; }
 .text-check { color: rgba(255, 255, 255, 0.8)!important; }
@@ -52,7 +53,7 @@ p { margin: 0 !important; }
     line-height: 48px;
     text-transform: normal;
     font-size: 1.5vh;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
   }
 
 /* rgb() */
@@ -233,7 +234,7 @@ body {
     text-align: center; 
     font-size: 7vh; 
     line-height: 1.8vh; 
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 .player-inventory-first > .item-slot > .item-slot-key > p {
@@ -246,7 +247,7 @@ body {
     text-align: center; 
     font-size: 7vh; 
     line-height: 1.8vh; 
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 .inv-options {
@@ -336,7 +337,7 @@ body {
     text-align: center;
     font-size: 1.5vh;
     font-weight: 300;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     outline: none;
 }
 
@@ -355,7 +356,7 @@ body {
     /* background-color: rgba(5, 5, 5, 0.5); */
     width: 100%;
     color: white;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     background-color: rgba(0, 0, 0, 0.192);
     font-size: 1.vh;
     padding: .4vh;
@@ -364,7 +365,7 @@ body {
 .ammo-info {
     position: relative;
     color: white;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     font-weight: 200;
     font-size: 1.vh;
     margin-left: .8vh;
@@ -384,7 +385,7 @@ body {
     text-transform: normal;
     font-size: 1.5vh;
     font-weight: 300;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 .inv-option-item > label {
     color: white;
@@ -393,7 +394,7 @@ body {
     text-transform: normal;
     font-size: 1.5vh;
     font-weight: 300;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     margin-right: 10px;
     margin-bottom: auto;
     margin-top: auto;
@@ -435,7 +436,7 @@ body {
     line-height: 48px;
     font-size: 1.1vh;
     font-weight: 900;
-    font-family: Roboto, sans-serif !important;
+    font-family: Noto Sans JP, sans-serif !important;
     border-radius: 0px;
     border-width: 1px;
     border-style: solid;
@@ -450,7 +451,7 @@ body {
     text-align: center;
     font-size: 1.5vh;
     font-weight: 300;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     outline: none;
 
 }
@@ -493,7 +494,7 @@ body {
 
 .item-slot-label {
     position: absolute;
-    bottom: 0vh;
+    bottom: 0.6vh;
     width: 100%;
     background-color: transparent;
 }
@@ -503,13 +504,12 @@ body {
     padding: 2.5px;
     padding-left: 5px;
     color: white;
-    font-size: 1.15vh;
+    font-size: 1.25vh;
+    overflow-wrap: break-word;
     text-align: left;
     letter-spacing: 0px;
-    font-family: 'Roboto', sans-serif !important;
-    white-space: pre;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    font-family: 'Noto Sans JP', sans-serif !important;
+    line-height: 1.25vh;
     cursor: none;
 }
 
@@ -551,8 +551,9 @@ body {
     margin-top: 9%;
     width: auto;
     height: auto;
-    max-width: 92%;
+    max-width: 80%;
     max-height: 100%;
+    transform: translateY(-1vh);
 }
 
 .item-slot-img-itembox img {
@@ -588,7 +589,7 @@ body {
     position: relative;
     color: white;
     font-size: 20px;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     font-weight: 600;
     letter-spacing: 0.01vh;
     right: -66%;
@@ -602,7 +603,7 @@ body {
     color: rgb(255, 255, 255);
     font-size: 16px;
     font-weight: 900;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     letter-spacing: 0.1vh;
     bottom: 30px;
     right: -77%;
@@ -613,7 +614,7 @@ body {
     position: relative;
     color: white;
     font-size: 20px;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     font-weight: 600;
     letter-spacing: 0.01vh;
     left: 3%;
@@ -628,7 +629,7 @@ body {
     color: rgb(255, 255, 255);
     font-size: 16px;
     font-weight: 900;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     letter-spacing: 0.1vh;
     bottom: 30px;
     right: 20.5%;
@@ -645,7 +646,7 @@ body {
 .player-inv-weight > p {
     color: white;
     font-size: 12px;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 .other-inv-info {
@@ -686,14 +687,14 @@ body {
     letter-spacing: 0.3px;
     line-height: 1;
     color: white;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     padding-top: 5px;
     padding-left: 5px;
 }
 
 .item-info-line {
     position: absolute;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     width: 85%;
     background-color: #6d6d6d96;
     height: 0.13vh;
@@ -705,7 +706,7 @@ body {
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: 0.3px;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     color: white;
     padding-left: 5px;
     padding-top: .5vh;
@@ -751,7 +752,7 @@ body {
 #itembox-action > p {
     font-size: 14px;
     font-weight: 400;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     white-space: pre;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -811,7 +812,7 @@ body {
     color: white;
     padding: 3px;
     font-size: 14px;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 #requiredItem-label {
@@ -869,7 +870,7 @@ body {
     text-align: center; 
     font-size: 4rem; 
     line-height: 1.8vh; 
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     z-index: -1;
 }
 
@@ -940,7 +941,7 @@ body {
     font-size: 1.15vh;
     text-align: left;
     letter-spacing: 0px;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     white-space: pre;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -1014,7 +1015,7 @@ body {
     bottom: 0;
     right: 0;
     margin: .3vh;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 .ammo-box-amount {
@@ -1056,7 +1057,7 @@ body {
     margin: 5vh;
     font-size: 3vh;
     color: rgb(255, 255, 255);
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 .weapon-attachments-container-description {
@@ -1065,7 +1066,7 @@ body {
     top: 5vh;
     font-size: 1.7vh;
     color: rgba(255, 255, 255, 0.8);
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 .weapon-attachments-container-details {
@@ -1074,7 +1075,7 @@ body {
     top: 9vh;
     font-size: 1.4vh;
     color: rgba(255, 255, 255, 0.8);
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 .weapon-attachments-container-detail-durability {
@@ -1114,7 +1115,7 @@ body {
     left: 0;
     margin: 5vh;
     color: rgba(255, 255, 255, 0.8);
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     font-size: 1.4vh
 }
 
@@ -1150,7 +1151,7 @@ body {
     text-align: center;
     text-transform: uppercase;
     line-height: 1.9vh;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     font-weight: 100;
 }
 
@@ -1231,7 +1232,7 @@ body {
     text-align: center;
     line-height: 6vh;
     color: white;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
     transition: .05s linear;
     z-index: 9999;
 }
@@ -1347,7 +1348,7 @@ body {
         position: relative;
         color: white;
         font-size: 20px;
-        font-family: 'Roboto', sans-serif !important;
+        font-family: 'Noto Sans JP', sans-serif !important;
         font-weight: 600;
         letter-spacing: 0.01vh;
         right: -93%;
@@ -1360,7 +1361,7 @@ body {
         position: relative;
         color: white;
         font-size: 20px;
-        font-family: 'Roboto', sans-serif !important;
+        font-family: 'Noto Sans JP', sans-serif !important;
         font-weight: 600;
         letter-spacing: 0.01vh;
         left: -6%;
@@ -1374,7 +1375,7 @@ body {
         color: rgb(255, 255, 255);
         font-size: 16px;
         font-weight: 900;
-        font-family: 'Roboto', sans-serif !important;
+        font-family: 'Noto Sans JP', sans-serif !important;
         letter-spacing: 0.1vh;
         bottom: 30px;
         right: 49.5%;
