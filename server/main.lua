@@ -246,7 +246,6 @@ local function AddItem(source, item, amount, slot, info, created)
 		info.quality = info.quality or 100
 	end
 
-	print(#Player.PlayerData.items)
 	if (totalWeight + (itemInfo['weight'] * amount)) <= Config.MaxInventoryWeight then
 		if item == "phone" then
 			TriggerClientEvent('lb-phone:itemAdded', source)
