@@ -708,7 +708,7 @@ end)
 RegisterCommand('inventory', function()
     if IsNuiFocused() then return end
     if not isCrafting and not inInventory then
-        if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
+        if not PlayerData.condition.in_dead and not PlayerData.condition.in_last_stand and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
             local ped = PlayerPedId()
             local curVeh = nil
             local VendingMachine = nil
@@ -781,7 +781,7 @@ RegisterKeyMapping('inventory', 'Open Inventory', 'keyboard', 'TAB')
 
 RegisterCommand('hotbar', function()
     isHotbar = not isHotbar
-    if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
+    if not PlayerData.condition.in_dead and not PlayerData.condition.in_last_stand and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
         ToggleHotbar(isHotbar)
     end
 end)
@@ -790,7 +790,7 @@ RegisterKeyMapping('hotbar', 'Toggles keybind slots', 'keyboard', 'z')
 
 for i = 1, 6 do
     RegisterCommand('slot' .. i,function()
-        if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() and not LocalPlayer.state.inv_busy then
+        if not PlayerData.condition.in_dead and not PlayerData.condition.in_last_stand and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() and not LocalPlayer.state.inv_busy then
             if i == 6 then
                 i = Config.MaxInventorySlots
             end
